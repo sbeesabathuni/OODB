@@ -14,9 +14,5 @@ anybody else.*/
 \c woco
 
 
-select p.name, sum(complist.shares_owned*c.share_price) as networth 
-from person p, company c, unnest(p.company_owned_list) as complist 
-where complist.id = c.id and  complist.shares_owned >0 
-group by p.name 
-order by p.name;
+select p.name, sum(complist.shares_owned*c.share_price) as networth from person p, company c, unnest(p.company_owned_list) as complist where complist.id = c.id and  complist.shares_owned >0 group by p.name order by p.name;
 
